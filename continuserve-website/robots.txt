@@ -1,0 +1,20 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /logs/
+Disallow: /backups/
+Disallow: /uploads/private/
+Disallow: /.env
+Disallow: *.log
+Disallow: *.ini
+Disallow: *.conf
+
+# Allow important pages
+Allow: /
+Allow: /index.php
+Allow: /api/newsletter.php
+Allow: /assets/
+
+# Sitemap (add when you create one)
+# Sitemap: https://yourdomain.com/sitemap.xml
