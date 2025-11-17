@@ -54,11 +54,7 @@ function handleScroll(navbar, backToTopBtn) {
         }
     }
     
-    // Parallax effect for hero section
-    const heroSection = document.querySelector('.hero-section');
-    if (heroSection && scrollY < window.innerHeight) {
-        heroSection.style.transform = `translateY(${scrollY * 0.5}px)`;
-    }
+    // Removed parallax effect for hero section to prevent content overlap
 }
 
 // ===== NAVIGATION =====

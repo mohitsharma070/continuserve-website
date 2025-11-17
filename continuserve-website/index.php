@@ -1,184 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ContinuServe - Business Support Services</title>
-    <meta name="description" content="Professional business support services by ContinuServe, a subsidiary of Quattro Business Support Services.">
-    <meta name="keywords" content="business support, consulting, technical support, system integration, cloud solutions">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Tekstrafin - Finance & Technology Consulting</title>
+<meta name="description" content="Professional finance and technology consulting services by Tekstrafin. Empowering businesses with strategic solutions and expert guidance." />
+<meta name="keywords" content="finance consulting, IT consulting, fintech strategy, business growth, technology advisory" />
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+<!-- AOS Animation -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="assets/css/style.css" rel="stylesheet" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+
+<style>
+body {
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 76px;
+}
+
+/* HERO */
+.hero-section {
+    position: relative;
+    height: 90vh;
+    min-height: 600px;
+    background: url('assets/images/banner.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(13,59,102,0.7), rgba(13,59,102,0.85));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 15px;
+}
+
+.hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #FAF0CA;
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #F4D35E;
+    margin-bottom: 1.5rem;
+}
+
+.hero-buttons .btn {
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #0D3B66;
+    border-color: #0D3B66;
+}
+
+.btn-primary:hover {
+    background-color: #F4D35E;
+    border-color: #F4D35E;
+    color: #000;
+}
+
+.btn-outline-light {
+    border-color: #F4D35E;
+    color: #FAF0CA;
+}
+
+.btn-outline-light:hover {
+    background-color: #F4D35E;
+    color: #000;
+}
+
+/* SECTIONS */
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #0D3B66;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.title-underline {
+    width: 80px;
+    height: 4px;
+    background: #F4D35E;
+    margin: 0 auto 1.5rem;
+    border-radius: 5px;
+}
+
+/* SERVICES */
+.service-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    background: #fff;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 30px rgba(0,0,0,0.12);
+}
+
+/* ABOUT IMAGE */
+.about-image-wrapper img {
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 100%;
+}
+
+/* TESTIMONIALS */
+.testimonial-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+.testimonial-card:hover {
+    transform: translateY(-6px);
+}
+.testimonial-stars i {
+    color: #F4D35E;
+    font-size: 1.2rem;
+}
+
+/* CONTACT */
+.contact-section {
+    background: linear-gradient(135deg, #0D3B66, #003E99);
+    color: #fff;
+}
+.contact-section .section-title, .contact-section .section-subtitle {
+    color: #fff;
+}
+
+/* ANIMATIONS */
+@keyframes fadeDown { from {opacity: 0; transform: translateY(-25px);} to {opacity:1; transform: translateY(0);} }
+@keyframes fadeUp { from {opacity: 0; transform: translateY(25px);} to {opacity:1; transform: translateY(0);} }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-buttons .btn { width: 100%; margin-bottom: 10px; }
+}
+</style>
 </head>
 <body>
-    <?php include 'includes/header.php'; ?>
-    
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-overlay">
-            <div class="container">
-                <div class="row justify-content-center text-center">
-                    <div class="col-lg-8">
-                        <h1 class="hero-title">Professional Business Support Services</h1>
-                        <p class="hero-subtitle">Empowering your business with comprehensive solutions and expert support to drive growth and innovation</p>
-                        <div class="hero-buttons">
-                            <a href="#services" class="btn btn-primary btn-lg me-3">
-                                <i class="fas fa-rocket me-2"></i>Our Services
-                            </a>
-                            <a href="#contact" class="btn btn-outline-light btn-lg">
-                                <i class="fas fa-phone me-2"></i>Contact Us
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section py-5">
+<?php include 'includes/header.php'; ?>
+
+<!-- HERO -->
+<section class="hero-section">
+    <div class="hero-overlay" data-aos="fade-up">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Our Services</h2>
-                    <p class="section-subtitle">Comprehensive business solutions tailored to your unique needs and objectives</p>
-                    <div class="title-underline"></div>
-                </div>
-            </div>
-            <div class="row g-4">
-                <?php include 'includes/services-grid.php'; ?>
+            <h1 class="hero-title">Professional Finance & Technology Consulting</h1>
+            <p class="hero-subtitle">Empowering your business with strategic solutions to drive growth and innovation</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary btn-lg me-3"><i class="fas fa-rocket me-2"></i>Our Services</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg"><i class="fas fa-phone me-2"></i>Contact Us</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- About Section -->
-    <section class="about-section py-5 bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h3 class="section-title">About ContinuServe</h3>
-                    <p class="lead">A trusted subsidiary of Quattro Business Support Services</p>
-                    <p>We specialize in delivering exceptional business support services that help organizations optimize their operations, enhance productivity, and achieve sustainable growth. Our team of experienced professionals brings deep industry knowledge and innovative solutions to every client engagement.</p>
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <div class="stat-item">
-                                <h4 class="stat-number">150+</h4>
-                                <p class="stat-label">Happy Clients</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="stat-item">
-                                <h4 class="stat-number">500+</h4>
-                                <p class="stat-label">Projects Completed</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="about.php" class="btn btn-primary mt-3">
-                        <i class="fas fa-arrow-right me-2"></i>Learn More
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-image-wrapper">
-                        <img src="assets/images/about-team.jpg" alt="ContinuServe Team" class="img-fluid rounded shadow">
-                    </div>
-                </div>
-            </div>
+<!-- SERVICES -->
+<section id="services" class="py-5">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Tailored solutions for finance, technology, and business growth</p>
+            <div class="title-underline"></div>
         </div>
-    </section>
+        <div class="row g-4">
+            <?php include 'includes/services-grid.php'; ?>
+        </div>
+    </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title text-white">Contact Us</h2>
-                    <p class="section-subtitle text-white-50">Get in touch with our team of experts to discuss your business needs</p>
-                    <div class="title-underline"></div>
+<!-- ABOUT -->
+<section id="about" class="about-section py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h3 class="section-title">About Tekstrafin</h3>
+                <p class="lead text-primary">Your trusted partner for finance and technology consulting</p>
+                <p>We deliver innovative solutions to optimize operations, enhance productivity, and achieve sustainable business growth.</p>
+                <div class="row mt-4 text-center">
+                    <div class="col-md-6">
+                        <h4 class="stat-number text-primary">150+</h4>
+                        <p class="stat-label">Happy Clients</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="stat-number text-primary">500+</h4>
+                        <p class="stat-label">Projects Completed</p>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <a href="about.php" class="btn btn-primary"><i class="fas fa-arrow-right me-2"></i>Learn More</a>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <?php include 'includes/contact-form.php'; ?>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="about-image-wrapper">
+                    <img src="assets/images/team.jpg" alt="About Tekstrafin">
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Client Testimonials -->
-    <section class="testimonials-section py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">What Our Clients Say</h2>
-                    <p class="section-subtitle">Hear from businesses that have transformed with our support</p>
-                    <div class="title-underline"></div>
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials-section py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Hear from businesses that have benefited from Tekstrafin</p>
+            <div class="title-underline"></div>
+        </div>
+        <div class="row g-4">
+            <!-- Example testimonial -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Tekstrafin transformed our business operations completely. Their expertise made all the difference."</p>
+                    <div class="testimonial-author">
+                        <strong>Jane Doe</strong><br>
+                        <span>CEO, FinTech Innovators</span>
+                    </div>
                 </div>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"ContinuServe transformed our business operations completely. Their expertise and support made all the difference."</p>
-                        <div class="testimonial-author">
-                            <strong>Sarah Johnson</strong>
-                            <span>CEO, TechCorp Solutions</span>
-                        </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Professional, reliable, and results-driven. Tekstrafin helped us scale efficiently."</p>
+                    <div class="testimonial-author">
+                        <strong>John Smith</strong><br>
+                        <span>Director, Global Solutions</span>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"Professional, reliable, and results-driven. I highly recommend ContinuServe for any business looking to scale."</p>
-                        <div class="testimonial-author">
-                            <strong>Michael Chen</strong>
-                            <span>Director, Global Innovations</span>
-                        </div>
+            </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars mb-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"Their technical support team is outstanding. Quick response times and effective solutions every time."</p>
-                        <div class="testimonial-author">
-                            <strong>Emily Rodriguez</strong>
-                            <span>IT Manager, DataFlow Inc</span>
-                        </div>
+                    <p class="testimonial-text">"Their technical team is outstanding. Quick response times and effective solutions every time."</p>
+                    <div class="testimonial-author">
+                        <strong>Emily Lee</strong><br>
+                        <span>IT Manager, DataFlow Inc</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <?php include 'includes/footer.php'; ?>
+<!-- CONTACT -->
+<section id="contact" class="contact-section py-5">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-down">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Get in touch with our experts to discuss your business needs</p>
+            <div class="title-underline bg-white"></div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8" data-aos="fade-up">
+                <?php include 'includes/contact-form.php'; ?>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="assets/js/script.js"></script>
+<?php include 'includes/footer.php'; ?>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 800, once: true });
+</script>
+
 </body>
 </html>

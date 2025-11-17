@@ -1,151 +1,61 @@
-<footer class="footer bg-dark text-light py-5">
+<?php
+// footer.php - Enhanced Tekstrafin Footer
+?>
+
+<footer style="background-color:#0D3B66; color:#FAF0CA; padding:60px 0; font-family:'Open Sans', sans-serif;">
     <div class="container">
-        <div class="row g-4">
-            <!-- Company Info -->
-            <div class="col-lg-4 col-md-6">
-                <div class="footer-brand mb-4">
-                    <div class="d-flex align-items-center">
-                        <div class="logo-container me-2">
-                            <div class="logo-square-white"></div>
-                        </div>
-                        <h5 class="footer-title mb-0">ContinuServe</h5>
-                    </div>
-                </div>
-                <p class="footer-description">
-                    A trusted subsidiary of Quattro Business Support Services, providing comprehensive business solutions 
-                    and expert support to help your organization thrive in today's competitive marketplace.
-                </p>
-                
-                <!-- Contact Info -->
-                <div class="contact-info mt-4">
-                    <div class="contact-item mb-2">
-                        <i class="fas fa-phone text-primary me-2"></i>
-                        <span>+1 (555) 123-4567</span>
-                    </div>
-                    <div class="contact-item mb-2">
-                        <i class="fas fa-envelope text-primary me-2"></i>
-                        <a href="mailto:info@continuserve.com" class="text-light-emphasis">info@continuserve.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                        <span>123 Business Ave, Suite 100<br>New York, NY 10001</span>
-                    </div>
-                </div>
-                
-                <!-- Social Links -->
-                <div class="social-links mt-4">
-                    <a href="https://linkedin.com/company/continuserve" class="social-link me-3" target="_blank" title="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://twitter.com/continuserve" class="social-link me-3" target="_blank" title="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://facebook.com/continuserve" class="social-link me-3" target="_blank" title="Facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://youtube.com/continuserve" class="social-link" target="_blank" title="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
+        <div class="row">
+
+            <!-- About / Brand -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h5 style="font-family:'Poppins', sans-serif; font-weight:700; color:#F4D35E;">Tekstrafin</h5>
+                <p>Your trusted partner for business and technology consulting, empowering growth through innovative solutions and expert guidance.</p>
+                <div class="footer-icons mt-3">
+                    <a href="#" style="color:#FAF0CA; margin-right:10px; transition:0.3s;"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" style="color:#FAF0CA; margin-right:10px; transition:0.3s;"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" style="color:#FAF0CA; margin-right:10px; transition:0.3s;"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="mailto:info@tekstrafin.com" style="color:#FAF0CA; transition:0.3s;"><i class="fa-solid fa-envelope"></i></a>
                 </div>
             </div>
-            
-            <!-- Services Links -->
-            <div class="col-lg-2 col-md-6">
-                <h6 class="footer-subtitle">Services</h6>
-                <ul class="footer-links">
-                    <li><a href="services/consulting.php">Business Consulting</a></li>
-                    <li><a href="services/support.php">Technical Support</a></li>
-                    <li><a href="services/integration.php">System Integration</a></li>
-                    <li><a href="services/cloud.php">Cloud Solutions</a></li>
-                    <li><a href="services/security.php">Security Services</a></li>
-                    <li><a href="services/training.php">Training & Support</a></li>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h6 style="font-weight:700; color:#F4D35E;">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="index.php" style="color:#FAF0CA; text-decoration:none;">Home</a></li>
+                    <li><a href="about.php" style="color:#FAF0CA; text-decoration:none;">About Us</a></li>
+                    <li><a href="services.php" style="color:#FAF0CA; text-decoration:none;">Services</a></li>
+                    <li><a href="case-studies.php" style="color:#FAF0CA; text-decoration:none;">Case Studies</a></li>
+                    <li><a href="blog.php" style="color:#FAF0CA; text-decoration:none;">Blog</a></li>
+                    <li><a href="#contact" style="color:#FAF0CA; text-decoration:none;">Contact</a></li>
                 </ul>
             </div>
-            
-            <!-- Industries Links -->
-            <div class="col-lg-2 col-md-6">
-                <h6 class="footer-subtitle">Industries</h6>
-                <ul class="footer-links">
-                    <li><a href="industries/healthcare.php">Healthcare</a></li>
-                    <li><a href="industries/finance.php">Finance & Banking</a></li>
-                    <li><a href="industries/retail.php">Retail & E-commerce</a></li>
-                    <li><a href="industries/manufacturing.php">Manufacturing</a></li>
-                    <li><a href="industries/education.php">Education</a></li>
-                    <li><a href="industries/government.php">Government</a></li>
-                </ul>
+
+            <!-- Contact Info -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h6 style="font-weight:700; color:#F4D35E;">Contact Us</h6>
+                <p style="margin-bottom:5px;"><i class="fas fa-envelope me-2"></i> info@tekstrafin.com</p>
+                <p style="margin-bottom:5px;"><i class="fas fa-phone me-2"></i> +91 9876543210</p>
+                <p><i class="fas fa-map-marker-alt me-2"></i> Jaipur, Rajasthan, India</p>
             </div>
-            
-            <!-- Company Links -->
-            <div class="col-lg-2 col-md-6">
-                <h6 class="footer-subtitle">Company</h6>
-                <ul class="footer-links">
-                    <li><a href="about.php">About Us</a></li>
-                    <li><a href="careers.php">Careers</a></li>
-                    <li><a href="news.php">News & Updates</a></li>
-                    <li><a href="blog.php">Blog</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="partnerships.php">Partners</a></li>
-                </ul>
+
+            <!-- Newsletter / CTA -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h6 style="font-weight:700; color:#F4D35E;">Newsletter</h6>
+                <p>Subscribe to our newsletter for insights, updates, and business tips.</p>
+                <form>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your email" aria-label="Email" style="border-radius:50px 0 0 50px; border:none; padding:10px;">
+                        <button class="btn btn-warning" type="submit" style="border-radius:0 50px 50px 0; background-color:#F4D35E; color:#0D3B66; border:none;">Subscribe</button>
+                    </div>
+                </form>
             </div>
-            
-            <!-- Newsletter & Support -->
-            <div class="col-lg-2 col-md-6">
-                <h6 class="footer-subtitle">Support</h6>
-                <ul class="footer-links">
-                    <li><a href="support/help.php">Help Center</a></li>
-                    <li><a href="support/documentation.php">Documentation</a></li>
-                    <li><a href="support/status.php">System Status</a></li>
-                    <li><a href="support/tickets.php">Support Tickets</a></li>
-                </ul>
-                
-                <!-- Newsletter Signup -->
-                <div class="newsletter-signup mt-4">
-                    <h6 class="footer-subtitle">Newsletter</h6>
-                    <p class="small mb-2">Stay updated with our latest news</p>
-                    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-                        <div class="input-group input-group-sm">
-                            <input type="email" class="form-control" placeholder="Your email" required>
-                            <button class="btn btn-primary" type="submit">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+
         </div>
-        
+
         <!-- Footer Bottom -->
-        <hr class="footer-divider mt-5">
-        
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <p class="footer-copyright mb-0">
-                    &copy; <?= date('Y') ?> ContinuServe. All rights reserved. | 
-                    A subsidiary of Quattro Business Support Services
-                </p>
-            </div>
-            <div class="col-md-6">
-                <div class="footer-legal text-md-end">
-                    <a href="legal/privacy.php" class="footer-link me-3">Privacy Policy</a>
-                    <a href="legal/terms.php" class="footer-link me-3">Terms of Service</a>
-                    <a href="legal/cookies.php" class="footer-link">Cookie Policy</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Website URL -->
-        <div class="row mt-3">
-            <div class="col-12 text-center">
-                <p class="footer-website mb-0">
-                    <i class="fas fa-globe text-primary me-2"></i>
-                    <a href="https://continuserve.com" class="text-primary">https://continuserve.com</a>
-                </p>
-            </div>
+        <div class="text-center mt-4 pt-3 border-top" style="border-color:#FAF0CA;">
+            <p style="margin-bottom:0;">© <?php echo date("Y"); ?> Tekstrafin. All rights reserved.</p>
         </div>
     </div>
 </footer>
-
-<!-- Back to Top Button -->
-<button class="btn-back-to-top" id="backToTop" title="Back to Top">
-    <i class="fas fa-chevron-up"></i>
-</button>
