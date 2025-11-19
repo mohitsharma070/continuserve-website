@@ -1,43 +1,39 @@
 <?php
-// services-grid.php - Tekstrafin Services Cards
+// services-grid.php - Tekstrafin Services
+
+$servername = "localhost";
+$username = "root";
+$password = ""; // your XAMPP MySQL password
+$dbname = "tekstrafin_db";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch services
+$sql = "SELECT * FROM services ORDER BY id ASC";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo '<div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="service-card">
+                    <div class="service-icon mb-3">
+                        <i class="'.htmlspecialchars($row['icon']).' fa-2x text-primary"></i>
+                    </div>
+                    <h4 class="mb-3">'.htmlspecialchars($row['title']).'</h4>
+                    <p>'.htmlspecialchars($row['description']).'</p>
+                </div>
+              </div>';
+    }
+} else {
+    echo "<p class='text-center'>No services available yet.</p>";
+}
+
+$conn->close();
 ?>
 
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-    <div class="service-card">
-        <div class="service-icon mb-3" style="background: linear-gradient(135deg, #0D3B66, #0D3B66); color: #FAF0CA;">
-            <i class="fas fa-chart-line fa-3x"></i>
-        </div>
-        <h5 class="service-title mb-2">Finance Consulting</h5>
-        <p class="service-description">Strategic financial guidance to optimize performance, manage risks, and increase profitability.</p>
-    </div>
-</div>
-
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-    <div class="service-card">
-        <div class="service-icon mb-3" style="background: linear-gradient(135deg, #F4D35E, #F4D35E); color: #0D3B66;">
-            <i class="fas fa-laptop-code fa-3x"></i>
-        </div>
-        <h5 class="service-title mb-2">Technology Advisory</h5>
-        <p class="service-description">Expert IT strategy, system integration, and technology planning to accelerate growth.</p>
-    </div>
-</div>
-
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-    <div class="service-card">
-        <div class="service-icon mb-3" style="background: linear-gradient(135deg, #FAF0CA, #FAF0CA); color: #0D3B66;">
-            <i class="fas fa-coins fa-3x"></i>
-        </div>
-        <h5 class="service-title mb-2">Fintech Strategy</h5>
-        <p class="service-description">Innovative fintech solutions to transform operations, enhance customer experience, and drive revenue.</p>
-    </div>
-</div>
-
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-    <div class="service-card">
-        <div class="service-icon mb-3" style="background: linear-gradient(135deg, #0D3B66, #0D3B66); color: #FAF0CA;">
-            <i class="fas fa-lightbulb fa-3x"></i>
-        </div>
-        <h5 class="service-title mb-2">Business Growth Solutions</h5>
-        <p class="service-description">Customized strategies to scale your business, improve efficiency, and maximize opportunities.</p>
-    </div>
-</div>

@@ -32,6 +32,17 @@ body {
     padding-top: 76px;
 }
 
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Section offset for fixed navbar */
+#about, #services, #testimonials, #contact {
+    padding-top: 80px;
+    margin-top: -76px;
+}
+
 /* HERO */
 .hero-section {
     position: relative;
@@ -96,7 +107,7 @@ body {
     color: #000;
 }
 
-/* SECTIONS */
+/* Sections */
 .section-title {
     font-family: 'Poppins', sans-serif;
     font-size: 2.3rem;
@@ -166,10 +177,6 @@ body {
     color: #fff;
 }
 
-/* ANIMATIONS */
-@keyframes fadeDown { from {opacity: 0; transform: translateY(-25px);} to {opacity:1; transform: translateY(0);} }
-@keyframes fadeUp { from {opacity: 0; transform: translateY(25px);} to {opacity:1; transform: translateY(0);} }
-
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .hero-title { font-size: 2rem; }
@@ -178,7 +185,7 @@ body {
 }
 </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="76" tabindex="0">
 
 <?php include 'includes/header.php'; ?>
 
@@ -199,7 +206,7 @@ body {
 <!-- SERVICES -->
 <section id="services" class="py-5">
     <div class="container">
-        <div class="text-center mb-5" data-aos="fade-up">
+        <div class="text-center mb-5" style="margin-top:50px;" data-aos="fade-up">
             <h2 class="section-title">Our Services</h2>
             <p class="section-subtitle">Tailored solutions for finance, technology, and business growth</p>
             <div class="title-underline"></div>
@@ -250,55 +257,22 @@ body {
             <div class="title-underline"></div>
         </div>
         <div class="row g-4">
-            <!-- Example testimonial -->
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars mb-2">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Tekstrafin transformed our business operations completely. Their expertise made all the difference."</p>
-                    <div class="testimonial-author">
-                        <strong>Jane Doe</strong><br>
-                        <span>CEO, FinTech Innovators</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars mb-2">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Professional, reliable, and results-driven. Tekstrafin helped us scale efficiently."</p>
-                    <div class="testimonial-author">
-                        <strong>John Smith</strong><br>
-                        <span>Director, Global Solutions</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars mb-2">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Their technical team is outstanding. Quick response times and effective solutions every time."</p>
-                    <div class="testimonial-author">
-                        <strong>Emily Lee</strong><br>
-                        <span>IT Manager, DataFlow Inc</span>
-                    </div>
-                </div>
-            </div>
+            <?php include 'includes/testimonials-grid.php'; ?>
         </div>
     </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact-section py-5">
+    <?php
+    if (isset($_GET['msg']) && $_GET['msg'] === 'success') {
+        echo '<div class="alert alert-success text-center">Thank you! Your message has been sent successfully.</div>';
+    }
+    if (isset($_GET['msg']) && $_GET['msg'] === 'error') {
+        echo '<div class="alert alert-danger text-center">Oops! Something went wrong. Please try again.</div>';
+    }
+    ?>
+
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-down">
             <h2 class="section-title">Contact Us</h2>

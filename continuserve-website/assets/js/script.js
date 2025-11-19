@@ -129,108 +129,104 @@ function highlightActiveSection() {
     });
 }
 
-// ===== CONTACT FORM =====
+// ================= CONTACT FORM =================
 function initContactForm() {
-    const contactForm = document.querySelector('.contact-form');
-    if (!contactForm) return;
-    
-    // Form validation
-    contactForm.addEventListener('submit', function(e) {
-        if (!validateContactForm(this)) {
-            e.preventDefault();
-            e.stopPropagation();
-        } else {
-            showFormSubmitting(this);
-        }
-        
-        this.classList.add('was-validated');
+    const form = document.querySelector('.contact-form');
+    if (!form) return;
+
+    // Handle submit
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Validate all fields
+        const isValid = validateContactForm(form);
+
+        if (!isValid) return;
+
+        // Show submitting state
+        showFormSubmitting(form);
+
+        // If using AJAX – trigger here:
+        // submitContactForm(form);
+
+        setTimeout(() => resetSubmitButton(form), 4000); // fallback reset
     });
-    
+
     // Real-time validation
-    const formControls = contactForm.querySelectorAll('.form-control, .form-select');
-    formControls.forEach(control => {
-        control.addEventListener('blur', function() {
-            validateField(this);
-        });
-        
-        control.addEventListener('input', function() {
-            if (this.classList.contains('is-invalid')) {
-                validateField(this);
-            }
-        });
+    const inputs = form.querySelectorAll('.form-control, .form-select');
+    inputs.forEach(input => {
+        input.addEventListener('input', () => validateField(input));
+        input.addEventListener('blur', () => validateField(input));
     });
 }
 
+// Validate whole form
 function validateContactForm(form) {
-    const requiredFields = form.querySelectorAll('[required]');
     let isValid = true;
-    
-    requiredFields.forEach(field => {
-        if (!validateField(field)) {
-            isValid = false;
-        }
+
+    // Validate required fields
+    form.querySelectorAll('[required]').forEach(field => {
+        if (!validateField(field)) isValid = false;
     });
-    
+
     // Email validation
-    const emailField = form.querySelector('[type="email"]');
+    const emailField = form.querySelector('input[type="email"]');
     if (emailField && emailField.value && !isValidEmail(emailField.value)) {
         showFieldError(emailField, 'Please enter a valid email address');
         isValid = false;
     }
-    
-    // Message length validation
+
+    // Message length check
     const messageField = form.querySelector('#message');
-    if (messageField && messageField.value.length < 10) {
+    if (messageField && messageField.value.trim().length < 10) {
         showFieldError(messageField, 'Message must be at least 10 characters long');
         isValid = false;
     }
-    
+
+    // Auto-focus first invalid field
     if (!isValid) {
-        showAlert('Please correct the errors below before submitting.', 'danger');
-        // Focus on first invalid field
         const firstInvalid = form.querySelector('.is-invalid');
-        if (firstInvalid) {
-            firstInvalid.focus();
-        }
+        if (firstInvalid) firstInvalid.focus();
+        showAlert('Please fix the highlighted fields.', 'danger');
     }
-    
+
     return isValid;
 }
 
+// Validate a single field
 function validateField(field) {
     const value = field.value.trim();
-    let isValid = true;
-    
-    // Required field validation
-    if (field.hasAttribute('required') && !value) {
-        showFieldError(field, 'This field is required');
-        isValid = false;
-    }
-    // Email validation
+    let errorMessage = '';
+
+    if (field.required && !value) {
+        errorMessage = 'This field is required';
+    } 
     else if (field.type === 'email' && value && !isValidEmail(value)) {
-        showFieldError(field, 'Please enter a valid email address');
-        isValid = false;
-    }
-    // Phone validation (if value exists)
+        errorMessage = 'Please enter a valid email address';
+    } 
     else if (field.type === 'tel' && value && !isValidPhone(value)) {
-        showFieldError(field, 'Please enter a valid phone number');
-        isValid = false;
+        errorMessage = 'Please enter a valid phone number';
     }
-    else {
+
+    if (errorMessage) {
+        showFieldError(field, errorMessage);
+        return false;
+    } else {
         showFieldSuccess(field);
+        return true;
     }
-    
-    return isValid;
 }
+
+// --------------- UI Helpers ----------------
 
 function showFieldError(field, message) {
     field.classList.remove('is-valid');
     field.classList.add('is-invalid');
-    
-    let feedback = field.parentNode.querySelector('.invalid-feedback');
-    if (feedback) {
-        feedback.textContent = message;
-    }
+
+    let feedback = field.parentElement.querySelector('.invalid-feedback');
+    if (!feedback) return;
+
+    feedback.textContent = message;
 }
 
 function showFieldSuccess(field) {
@@ -239,33 +235,36 @@ function showFieldSuccess(field) {
 }
 
 function showFormSubmitting(form) {
-    const submitBtn = form.querySelector('[type="submit"]');
-    const spinner = submitBtn.querySelector('.spinner-border');
-    
-    if (submitBtn) {
-        submitBtn.disabled = true;
-        if (spinner) {
-            spinner.classList.remove('d-none');
-        }
-        
-        // Reset after 5 seconds as fallback
-        setTimeout(() => {
-            submitBtn.disabled = false;
-            if (spinner) {
-                spinner.classList.add('d-none');
-            }
-        }, 5000);
-    }
+    const btn = form.querySelector('[type="submit"]');
+    if (!btn) return;
+
+    btn.disabled = true;
+
+    const spinner = btn.querySelector('.spinner-border');
+    if (spinner) spinner.classList.remove('d-none');
 }
 
+function resetSubmitButton(form) {
+    const btn = form.querySelector('[type="submit"]');
+    if (!btn) return;
+
+    btn.disabled = false;
+
+    const spinner = btn.querySelector('.spinner-border');
+    if (spinner) spinner.classList.add('d-none');
+}
+
+// Email validation
 function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
 }
 
+// Phone validation (international, flexible)
 function isValidPhone(phone) {
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-    return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+    const cleaned = phone.replace(/[\s\-\(\)]/g, '');
+    const regex = /^[+]?[0-9]{7,15}$/;
+    return regex.test(cleaned);
 }
 
 // ===== ANIMATIONS =====

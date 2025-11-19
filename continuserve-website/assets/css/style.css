@@ -276,15 +276,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-card {
-    background: var(--white);
-    padding: 2.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition-base);
-    border: none;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+    text-align: left; /* important */
     height: 100%;
-    position: relative;
-    overflow: hidden;
 }
 
 .service-card::before {
@@ -305,8 +303,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--box-shadow-hover);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 30px rgba(0,0,0,0.12);
 }
 
 .service-header {
@@ -314,18 +312,8 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1.5rem;
 }
 
-.service-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    color: var(--white);
+.service-icon i {
     font-size: 2rem;
-    position: relative;
-    overflow: hidden;
 }
 
 .service-icon::before {
@@ -902,4 +890,40 @@ h1, h2, h3, h4, h5, h6 {
 
 .border-radius-custom {
     border-radius: var(--border-radius) !important;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 992px) {
+    .service-card {
+        padding: 25px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-icon {
+        width: 70px !important;
+        height: 70px !important;
+    }
+    .service-card {
+        padding: 20px 15px;
+    }
+    .service-title {
+        font-size: 1.1rem;
+    }
+    .service-description {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .service-icon {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .service-title {
+        font-size: 1rem;
+    }
+    .service-description {
+        font-size: 0.9rem;
+    }
 }
