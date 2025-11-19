@@ -1,0 +1,66 @@
+#!/usr/bin/env php
+<?php
+/**
+ * ContinuServe Development Server Runner
+ * Usage: php run dev
+ */
+
+$command = $argv[1] ?? 'help';
+
+switch ($command) {
+    case 'dev':
+        runDevServer();
+        break;
+    
+    case 'help':
+    default:
+        showHelp();
+        break;
+}
+
+function runDevServer() {
+    $host = 'localhost';
+    $port = 8000;
+    $projectDir = __DIR__;
+    
+    echo "\n";
+    echo "========================================\n";
+    echo "  ContinuServe Website\n";
+    echo "  Development Server\n";
+    echo "========================================\n";
+    echo "\n";
+    
+    echo "[INFO] Project Directory: {$projectDir}\n";
+    echo "[INFO] Starting server on http://{$host}:{$port}\n";
+    echo "[INFO] Press Ctrl+C to stop\n";
+    echo "\n";
+    echo "========================================\n";
+    echo "\n";
+    
+    // Change to project directory
+    chdir($projectDir);
+    
+    // Start the built-in PHP server using full path
+    $phpPath = 'C:\\xampp\\php\\php.exe';
+    $command = "\"{$phpPath}\" -S {$host}:{$port}";
+    passthru($command);
+}
+
+function showHelp() {
+    echo "\n";
+    echo "========================================\n";
+    echo "  ContinuServe - Development Runner\n";
+    echo "========================================\n";
+    echo "\n";
+    echo "Usage: php run <command>\n";
+    echo "\n";
+    echo "Commands:\n";
+    echo "  dev      Start development server on http://localhost:8000\n";
+    echo "  help     Show this help message\n";
+    echo "\n";
+    echo "Examples:\n";
+    echo "  php run dev\n";
+    echo "  php run help\n";
+    echo "\n";
+}
+?>
